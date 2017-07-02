@@ -1,0 +1,277 @@
+<ion-view>
+
+<ion-nav-title>
+	<span ng-if='puzzle.name'>{{puzzle.name}}</span>
+	<span ng-if='!puzzle.name'>Puzzle {{puzzle.index+1}}</span>
+</ion-nav-title>
+
+<ion-nav-buttons side="left">
+	<a href='#/start' class='button button-positive'>Main Menu</a>
+	<a href='#/packs' class='button button-assertive'>Packs</a>
+	<a ui-sref='packs.pack({packIndex: info.packIndex})' class='button button-assertive' ng-if='pack.id >= 0'><span style="white-space: nowrap;">{{pack.name}}</span></a>
+	<a href='#/packs//-1' class='button button-assertive' ng-if='pack.id === undefined'><span style="white-space: nowrap;">{{pack.name}}</span></a>
+	<a ui-sref='packs.pack.puzzles({packIndex: info.packIndex, gridIndex: info.gridIndex})' class='button button-assertive' ng-if='pack.id >= 0'>{{puzzle.grid.w}}x{{puzzle.grid.h}}</a>
+</ion-nav-buttons>
+
+<ion-content class='bg' scroll="false">
+
+<div ng-include="'templates/puzzle/tutorial.html'" ng-if='tutorial'></div>
+
+<div style='width: 100%; height: {{board.geometry.bh}}px; margin: 2px;' class='{{imageSet}}' ng-if='board'>
+	<ion-scroll has-bouncing='false' direction="x" style='width: {{board.geometry.clues.w}}px; height: {{board.geometry.bh}}px;float:left;' ng-if="board.clues.show=='F'">
+		<div style='height: {{board.geometry.bh}}px;' class='text_block'
+			ng-show='!board.selected.item'
+		>
+			Select an item from the board to filter clues by item.
+		</div>
+		<div style='height: {{board.geometry.bh}}px;' class='text_block'
+			ng-show='board.selected.item && board.selected.filter.length === 0'
+		>
+			There is no clues for this item.
+		</div>
+		<div style='white-space:nowrap;'
+			ng-show='board.selected.filter.length'
+		>
+			<span ng-repeat='clue in board.selected.filter'
+				class='clue'
+				style='height: {{board.geometry.bh}}px;
+				border: 2px solid {{getColor2($index/board.selected.filter.length)}};
+				background: {{getColor2($index/board.selected.filter.length)}};
+				background: -moz-linear-gradient(top, rgb(250,250,250) 0%, {{getColor2($index/board.selected.filter.length)}} 50%, {{getColor2($index/board.selected.filter.length)}} 51%, rgb(255,255,255) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(255,255,255)), color-stop(50%,{{getColor2($index/board.selected.filter.length)}}), color-stop(51%,{{getColor2($index/board.selected.filter.length)}}), color-stop(100%,rgb(255,255,255)));
+				background: -ms-linear-gradient(top, rgb(250,250,250) 0%,{{getColor2($index/board.selected.filter.length)}} 50%,{{getColor2($index/board.selected.filter.length)}} 51%,rgb(255,255,255) 100%);
+				background: linear-gradient(to bottom, rgb(250,250,250) 0%,{{getColor2($index/board.selected.filter.length)}} 50%,{{getColor2($index/board.selected.filter.length)}} 51%,rgb(255,255,255) 100%);
+				background: -webkit-linear-gradient(top, rgb(250,250,250) 0%,{{getColor2($index/board.selected.filter.length)}} 50%,{{getColor2($index/board.selected.filter.length)}} 51%,rgb(255,255,255) 100%);'
+			>
+				<span ng-if='clue.a && clue.b' style='height: 100%;'>
+					<div class='{{clue.a.v}} clue_item' style='width: {{board.geometry.bh}}px;' ></div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='next to'">
+						<i class='ion-arrow-left-b' style='font-size: {{board.geometry.bh-4}}px'></i>
+						<i class='ion-arrow-right-b' style='font-size: {{board.geometry.bh-4}}px'></i>
+					</div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='immediately to the left of'"><i class='ion-arrow-right-b' style='font-size: {{board.geometry.bh-4}}px'></i></div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='same position as'"><i class='ion-android-more-vertical' style='font-size: {{board.geometry.bh-4}}px'></i></div>
+					<div class='{{clue.b.v}} clue_item' style='width: {{board.geometry.bh}}px;'></div>
+				</span>
+				<span ng-if="clue.type==='middle'" style='height: 100%;'>
+					<div class='clue_item clue_rule'><i class='ion-more' style='font-size: {{board.geometry.bh-4}}px' ng-if="clue.type=='middle'"></i></div>
+					<div class='{{clue.a.v}} clue_item' style='width: {{board.geometry.bh}}px;' ></div>
+					<div class='clue_item clue_rule'><i class='ion-more' style='font-size: {{board.geometry.bh-4}}px' ng-if="clue.type=='middle'"></i></div>
+				</span>
+			</span>
+		</div>
+	</ion-scroll>
+	<ion-scroll has-bouncing='false' direction="x" style='width: {{board.geometry.clues.w}}px; height: {{board.geometry.bh}}px;float:left;' ng-show="board.clues.show=='A'">
+		<div
+			style='height: {{board.geometry.bh}}px;'
+			class='text_block'
+			ng-show='board.clues.a.length==0'
+		>
+			"A" list is empty, to move clues to here tap on "B" list clues.
+		</div>
+		<div style='white-space:nowrap;'>
+			<span ng-repeat='clue in board.clues.a'
+				ng-if="clue.type!=='item'"
+				class='clue'
+				style='height: {{board.geometry.bh}}px;position:relative;
+				border: 2px solid {{getColor2($index/board.clues.a.length)}};
+				background: {{getColor2($index/board.clues.a.length)}};
+				background: -moz-linear-gradient(top, rgb(250,250,250) 0%, {{getColor2($index/board.clues.a.length)}} 50%, {{getColor2($index/board.clues.a.length)}} 51%, rgb(255,255,255) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(255,255,255)), color-stop(50%,{{getColor2($index/board.clues.a.length)}}), color-stop(51%,{{getColor2($index/board.clues.a.length)}}), color-stop(100%,rgb(255,255,255)));
+				background: -ms-linear-gradient(top, rgb(250,250,250) 0%,{{getColor2($index/board.clues.a.length)}} 50%,{{getColor2($index/board.clues.a.length)}} 51%,rgb(255,255,255) 100%);
+				background: linear-gradient(to bottom, rgb(250,250,250) 0%,{{getColor2($index/board.clues.a.length)}} 50%,{{getColor2($index/board.clues.a.length)}} 51%,rgb(255,255,255) 100%);
+				background: -webkit-linear-gradient(top, rgb(250,250,250) 0%,{{getColor2($index/board.clues.a.length)}} 50%,{{getColor2($index/board.clues.a.length)}} 51%,rgb(255,255,255) 100%);'
+				ng-click='toB($index)'
+				id='clue_{{getID(clue)}}'
+			>
+				<span ng-if='clue.a && clue.b' style='height: 100%;'>
+					<div class='{{clue.a.v}} clue_item' style='width: {{board.geometry.bh}}px;' ></div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='next to'">
+						<i class='ion-arrow-left-b' style='font-size: {{board.geometry.bh-4}}px'></i>
+						<i class='ion-arrow-right-b' style='font-size: {{board.geometry.bh-4}}px'></i>
+					</div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='immediately to the left of'"><i class='ion-arrow-right-b' style='font-size: {{board.geometry.bh-4}}px'></i></div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='same position as'"><i class='ion-android-more-vertical' style='font-size: {{board.geometry.bh-4}}px'></i></div>
+					<div class='{{clue.b.v}} clue_item' style='width: {{board.geometry.bh}}px;'></div>
+				</span>
+				<span ng-if="clue.type==='middle'" style='height: 100%;'>
+					<div class='clue_item clue_rule'><i class='ion-more' style='font-size: {{board.geometry.bh-4}}px' ng-if="clue.type=='middle'"></i></div>
+					<div class='{{clue.a.v}} clue_item' style='width: {{board.geometry.bh}}px;' ></div>
+					<div class='clue_item clue_rule'><i class='ion-more' style='font-size: {{board.geometry.bh-4}}px' ng-if="clue.type=='middle'"></i></div>
+				</span>
+			</span>
+		</div>
+	</ion-scroll>
+	<ion-scroll has-bouncing='false' direction="x" style='width: {{board.geometry.clues.w}}px; height: {{board.geometry.bh}}px; float: left;' ng-show="board.clues.show=='B'">
+		<div style='height: {{board.geometry.bh}}px;'
+			ng-show='board.clues.b.length==0'
+			class='text_block'
+		>
+			"B" list is empty, to move clues to here tap on "A" list clues.
+		</div>
+
+		<div style='white-space:nowrap;'>
+			<div ng-repeat='clue in board.clues.b'
+				ng-if="clue.type!=='item'"
+				class='clue'
+				style='height: {{board.geometry.bh}}px;position:relative;
+				border: 2px solid {{getColor2($index/board.clues.b.length)}};
+				background: {{getColor2($index/board.clues.b.length)}};
+				background: -moz-linear-gradient(top, rgb(250,250,250) 0%, {{getColor2($index/board.clues.b.length)}} 50%, {{getColor2($index/board.clues.b.length)}} 51%, rgb(255,255,255) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(255,255,255)), color-stop(50%,{{getColor2($index/board.clues.b.length)}}), color-stop(51%,{{getColor2($index/board.clues.b.length)}}), color-stop(100%,rgb(255,255,255)));
+				background: -ms-linear-gradient(top, rgb(250,250,250) 0%,{{getColor2($index/board.clues.b.length)}} 50%,{{getColor2($index/board.clues.b.length)}} 51%,rgb(255,255,255) 100%);
+				background: linear-gradient(to bottom, rgb(250,250,250) 0%,{{getColor2($index/board.clues.b.length)}} 50%,{{getColor2($index/board.clues.b.length)}} 51%,rgb(255,255,255) 100%);
+				background: -webkit-linear-gradient(top, rgb(250,250,250) 0%,{{getColor2($index/board.clues.b.length)}} 50%,{{getColor2($index/board.clues.b.length)}} 51%,rgb(255,255,255) 100%);'
+				ng-click='toA($index)'
+				id='clue_{{getID(clue)}}'
+			>
+				<span ng-if='clue.a && clue.b' style='height: 100%;'>
+					<div class='{{clue.a.v}} clue_item' style='width: {{board.geometry.bh}}px;' ></div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='next to'">
+						<i class='ion-arrow-left-b' style='font-size: {{board.geometry.bh-4}}px'></i>
+						<i class='ion-arrow-right-b' style='font-size: {{board.geometry.bh-4}}px'></i>
+					</div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='immediately to the left of'"><i class='ion-arrow-right-b' style='font-size: {{board.geometry.bh-4}}px'></i></div>
+					<div class='clue_item clue_rule' ng-if="clue.type=='same position as'"><i class='ion-android-more-vertical' style='font-size: {{board.geometry.bh-4}}px'></i></div>
+					<div class='{{clue.b.v}} clue_item' style='width: {{board.geometry.bh}}px;'></div>
+				</span>
+				<span ng-if='clue.a && !clue.b' style='width: 100%; height: 100%;'>
+					<div class='clue_item clue_rule'><i class='ion-more' style='font-size: {{board.geometry.bh-4}}px' ng-if="clue.type=='middle'"></i></div>
+					<div class='{{clue.a.v}} clue_item' style='width: {{board.geometry.bh}}px;'></div>
+					<div class='clue_item clue_rule'><i class='ion-more' style='font-size: {{board.geometry.bh-4}}px' ng-if="clue.type=='middle'"></i></div>
+				</span>
+			</div>
+		</div>
+	</ion-scroll>
+	<div
+		id='switch-clues'
+		class='size-1 mini-button mini-button-yellow mini-button-rigth' 
+		ng-click='switchClues()'>
+		<p>{{board.clues.show}}</p>
+	</div>
+</div>
+
+<div style='width: 100%; height: {{board.geometry.bh}}px; background-color: #333;' class='{{imageSet}}'>
+	<ion-scroll
+		has-bouncing='false'
+		direction='x'
+		style='width: 50%;
+			height: {{board.geometry.bh}}px;
+			float: left;'
+	>
+		<div class='nowrap'>
+			<div class='inline'
+				ng-repeat='item in board.selected.items'
+				ng-click='selectItem($index)'
+				ng-class="{'hidden-item': item.hidden}"
+				style='width: {{board.geometry.bh}}px; height: {{board.geometry.bh}}px;'
+			>
+				<div class='action-item'>
+					<div
+						ng-class="{'action-item-selected': board.selected.item === item}"
+						 class='{{item.v}}'
+						 style='width: 100%; height: 100%;'
+					></div>
+				</div>
+			</div>
+		</div>
+	</ion-scroll>
+
+	<ion-scroll
+		has-bouncing='false'
+		direction='x'
+		style='width: 50%;
+		height: {{board.geometry.bh}}px;
+		border-left: 2px solid #aaa;
+		float:left;'
+	>
+		<div class='nowrap'>
+			<div
+				style='height: {{board.geometry.bh}}px;'
+				class='inline'
+			>
+				<div class='mini-button size-2 mini-button-yellow'
+					style='width: {{board.geometry.bh}}px;'
+					ng-show='board.selected.item && !((board.selected.items.total === 1) && !board.selected.item.hidden)'
+					ng-click='setItem()'
+				><p><i class='ion-arrow-expand'></i></p>
+				</div>
+
+				<div class='mini-button size-2 mini-button-yellow'
+					style='width: {{board.geometry.bh}}px;'
+					ng-show='board.selected.item && board.selected.item.hidden'
+					ng-click='showItem()'
+				><p><i class='ion-plus-circled'></i></p>
+				</div>
+
+				<div
+					class='mini-button size-2 mini-button-yellow'
+					style='width: {{board.geometry.bh}}px;'
+					ng-show='board.selected.item && !board.selected.item.hidden'
+					ng-click='hideItem()'
+					id='remove'
+				><p><i class='ion-minus-circled'></i></p>
+				</div>
+				
+				<div
+					class='mini-button size-2 mini-button-yellow'
+					style='width: {{board.geometry.bh}}px;'
+					ng-click='toggleTryMode()'
+					ng-class='{"trymode_on" : trymode.on}'
+					id='try-mode'
+				><p><i class='ion-erlenmeyer-flask'></i></p>
+				</div>
+				<!--
+				<div class='mini-button size-2 mini-button-yellow' style='width: {{board.geometry.bh}}px;' ><p><i class='ion-help-circled'></i></p></div>
+				-->
+				<div class='mini-button size-2 mini-button-yellow'
+					style='width: {{board.geometry.bh}}px;'
+					ng-click='openHandbook()'
+					id='handbook'
+				>
+					<p><i class='ion-help-buoy'></i></p>
+				</div>
+				<div 
+					class='mini-button size-2 mini-button-yellow' 
+					style='width: {{board.geometry.bh}}px;'
+					ng-click='restart()'
+				><p><i class='ion-loop'></i></p>
+				</div>
+			</div>
+		</div>
+	</ion-scroll>
+</div>
+
+<ion-scroll zooming="true" direction='xy' style='height: 100%;' >
+<div
+	class='board board_{{board.grid.w}}x{{board.grid.h}} {{imageSet}}'
+	ng-if='board'
+	style='width: {{board.geometry.w}}px; height: {{board.geometry.h}}px;'
+	ng-class='{"trymode": trymode.on}'
+>
+	<div ng-repeat='col in board.board' class='board-row'>
+		<div ng-repeat='cell in col'
+			class='board-cell'
+			ng-class="(board.selected.x==$index && board.selected.y==$parent.$index)?'board-cell-selected':''"
+			ng-click='select($index,$parent.$index)'
+		>
+			<div ng-repeat='item in cell'
+				class='board-item board-item_{{getVisible(cell).length}} {{item.v}} hide_{{item.hidden}} color_{{$parent.$parent.$index%2}}'
+				ng-class='{"action-item-selected": item===board.selected.item, "trymode_higthligth": item.tryHigthligth}'
+				ng-click='select($parent.$index,$parent.$parent.$index, item, $event)'
+				id="{{item.v+'__P'+item.x+'x' + item.y}}"
+				style='position: relative;'
+			>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class='clear'></div>
+</div>
+<div class='clear'></div>
+</ion-scroll>
+
+</ion-content>
+</ion-view>
+

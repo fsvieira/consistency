@@ -1,0 +1,23 @@
+<ion-view>
+
+
+<ion-nav-title>{{pack.name}}</ion-nav-title>
+
+<ion-nav-buttons side="left">
+	<a href='#/start' class='button button-positive'>Main Menu</a>
+	<a href='#/packs' class='button button-assertive'>Packs</a>
+</ion-nav-buttons>
+
+<ion-content class='bg'>
+
+<a ng-repeat='grid in pack.grids' 
+	class='box' 
+	ui-sref="packs.pack.puzzles({gridIndex: grid.pos})"
+	style='background-color: {{getColor(grid.completed/grid.total)}}'
+>
+	Grid: {{grid.w}}x{{grid.h}}<br>
+	Completed {{grid.completed}} of {{grid.total}} Puzzles
+</a>
+
+</ion-content>
+</ion-view>

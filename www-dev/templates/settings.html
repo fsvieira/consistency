@@ -1,0 +1,19 @@
+ <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Settings</h1>
+      <button class='button button-assertive' ng-click='closeSettings()'><i class='ion-close-circled'></i> CLOSE</button>
+    </ion-header-bar>
+    <ion-content>
+		<ion-list>
+			<ion-item>
+				<ion-checkbox ng-model="settings.music" ng-change='updateMusic()'>Music</ion-checkbox>
+			</ion-item>
+			<ion-item>
+				<ion-checkbox ng-model="settings.sounds" ng-change='saveSettings()'>Sounds</ion-checkbox>
+			</ion-item>
+			<ion-item>
+				<ion-checkbox ng-model="settings.badchoice" ng-change='saveSettings()'>Puzzle - Bad Choice Alert</ion-checkbox>
+			</ion-item>
+		</ion-list>
+    </ion-content>
+  </ion-modal-view>

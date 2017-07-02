@@ -1,0 +1,50 @@
+<ion-view >
+
+<ion-nav-title>Packs</ion-nav-title>
+
+<ion-nav-buttons side="left">
+	<a href='#/start' class='button button-positive' >Main Menu</a>
+</ion-nav-buttons>
+
+<ion-content class='bg'>
+
+<ion-scroll
+	class="pages"
+	ng-if="1 < pages.length"
+>
+	<div ng-repeat="p in pages" ng-class="{'page': p !==currentPage+1, 'active_page': p === currentPage+1}">
+		{{p}}
+	</div>
+</ion-scroll>
+
+<!--
+<a
+	class='box'
+	ui-sref="packs.pack.puzzles.puzzle({puzzleIndex: -1})"
+	style='background-color: {{getColor(0)}}'
+>
+	Tutorial<br>
+	How to play<br>
+</a>
+-->
+<a
+	class='box'
+	ui-sref="packs.pack.puzzles({gridIndex: -1})"
+	style='background-color: {{getColor(0)}}'
+>
+	Start<br>
+	Pack<br>
+</a>
+
+<a
+	ng-repeat='pack in packs' 
+	class='box' 
+	ui-sref="packs.pack({packIndex: pack.id})"
+	style='background-color: {{getColor(pack.completed/pack.total)}}'
+>
+	{{pack.name}}<br>
+	Completed {{pack.completed}} of {{pack.total}} Puzzles<br>
+</a>
+
+</ion-content>
+</ion-view>

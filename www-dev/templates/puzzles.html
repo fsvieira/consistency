@@ -1,0 +1,26 @@
+<ion-view>
+
+<ion-nav-title>{{pack.grid.w}}x{{pack.grid.h}}</ion-nav-title>
+
+<ion-nav-buttons side="left">
+	<a href='#/start' class='button button-positive'>Main Menu</a>
+	<a href='#/packs' class='button button-assertive'>Packs</a>
+	<a ng-if='pack.id!==undefined' ui-sref='packs.pack({packIndex: pack.id})' class='button button-assertive'><span style="white-space: nowrap;">{{pack.name}}</span></a>
+</ion-nav-buttons>
+
+<ion-content class='bg'>
+
+<a ng-repeat='puzzle in puzzles' class='box' ng-click="openPuzzle($index)" style='background-color: {{getColor(puzzle.completed/100)}}'>
+	<span ng-if='puzzle.name'>{{puzzle.name}}</span><span ng-if='!puzzle.name'>Puzzle {{$index+1}}</span> <br>
+	<div ng-if="puzzle.tmpStatus === 'unlocked'">
+	Completed {{puzzle.completed}}% 
+	</div>
+	<i class='ion-locked' ng-if="puzzle.tmpStatus === 'locked'"></i>
+	<div ng-if="puzzle.tmpStatus === 'timed'">
+		<i class='ion-clock'></i>
+		Unlock in {{puzzle.counter.toISOString().substring(11, 19)}}
+	</div>
+</a>
+
+</ion-content>
+</ion-view>

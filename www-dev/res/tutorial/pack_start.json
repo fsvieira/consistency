@@ -1,0 +1,989 @@
+{
+  "name": "Start Pack",
+  "type": "tutorial",
+  "grid": {
+    "w": 3,
+    "h": 3,
+    "puzzles": [
+      {
+        "name": "Middle Column Clues",
+        "completed": 50,
+        "tmpStatus": "unlocked",
+        "clues": [
+          {
+			"type": "middle",
+			"a": {
+				"v": "var_0_1",
+				"y": 0
+			}
+		  },
+		  {
+			"type": "middle",
+			"a": {
+				"v": "var_1_1",
+				"y": 1
+			}
+		  },
+		  {
+			"type": "middle",
+			"a": {
+				"v": "var_2_1",
+				"y": 2
+			}
+		  }
+        ],
+        "solution": [
+          [
+            "var_0_0",
+            "var_0_1",
+            "var_0_2"
+          ],
+          [
+            "var_1_0",
+            "var_1_1",
+            "var_1_2"
+          ],
+          [
+            "var_2_0",
+            "var_2_1",
+            "var_2_2"
+          ]
+        ],
+        "progress": [
+          [
+            [
+              {
+                "v": "var_0_0",
+                "x": 0,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_1",
+                "x": 0,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_2",
+                "x": 0,
+                "y": 0,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_0_0",
+                "x": 1,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_1",
+                "x": 1,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_2",
+                "x": 1,
+                "y": 0,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_0_0",
+                "x": 2,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_1",
+                "x": 2,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_2",
+                "x": 2,
+                "y": 0,
+                "hidden": false
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "v": "var_1_0",
+                "x": 0,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_1",
+                "x": 0,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_2",
+                "x": 0,
+                "y": 1,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_1_0",
+                "x": 1,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_1",
+                "x": 1,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_2",
+                "x": 1,
+                "y": 1,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_1_0",
+                "x": 2,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_1",
+                "x": 2,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_2",
+                "x": 2,
+                "y": 1,
+                "hidden": false
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "v": "var_2_0",
+                "x": 0,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_1",
+                "x": 0,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 0,
+                "y": 2,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_2_0",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_1",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 1,
+                "y": 2,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_2_0",
+                "x": 2,
+                "y": 2,
+                "hidden": true
+              },
+              {
+                "v": "var_2_1",
+                "x": 2,
+                "y": 2,
+                "hidden": true
+              },
+              {
+                "v": "var_2_2",
+                "x": 2,
+                "y": 2,
+                "hidden": false
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "Same Column Clues",
+        "completed": 50,
+        "tmpStatus": "unlocked",
+        "clues": [
+          {
+			"type": "same position as",
+			"a": {
+				"v": "var_0_0",
+				"y": 0
+			},
+			"b": {
+				"v": "var_1_0",
+				"y": 1
+			}
+		  },
+		  {
+			"type": "same position as",
+			"a": {
+				"v": "var_0_1",
+				"y": 0
+			},
+			"b": {
+				"v": "var_1_1",
+				"y": 1
+			}
+		  },
+		  {
+			"type": "same position as",
+			"a": {
+				"v": "var_1_2",
+				"y": 1
+			},
+			"b": {
+				"v": "var_2_2",
+				"y": 2
+			}
+		  },
+ 		  {
+			"type": "same position as",
+			"a": {
+				"v": "var_1_2",
+				"y": 1
+			},
+			"b": {
+				"v": "var_0_2",
+				"y": 0
+			}
+		  }
+        ],
+        "solution": [
+          [
+            "var_0_0",
+            "var_0_1",
+            "var_0_2"
+          ],
+          [
+            "var_1_0",
+            "var_1_1",
+            "var_1_2"
+          ],
+          [
+            "var_2_0",
+            "var_2_1",
+            "var_2_2"
+          ]
+        ],
+        "progress": [
+          [
+            [
+              {
+                "v": "var_0_0",
+                "x": 0,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_1",
+                "x": 0,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_2",
+                "x": 0,
+                "y": 0,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_0_0",
+                "x": 1,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_1",
+                "x": 1,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_2",
+                "x": 1,
+                "y": 0,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_0_0",
+                "x": 2,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_1",
+                "x": 2,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_2",
+                "x": 2,
+                "y": 0,
+                "hidden": false
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "v": "var_1_0",
+                "x": 0,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_1",
+                "x": 0,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_2",
+                "x": 0,
+                "y": 1,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_1_0",
+                "x": 1,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_1",
+                "x": 1,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_2",
+                "x": 1,
+                "y": 1,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_1_0",
+                "x": 2,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_1",
+                "x": 2,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_2",
+                "x": 2,
+                "y": 1,
+                "hidden": false
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "v": "var_2_0",
+                "x": 0,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_1",
+                "x": 0,
+                "y": 2,
+                "hidden": true
+              },
+              {
+                "v": "var_2_2",
+                "x": 0,
+                "y": 2,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_2_0",
+                "x": 1,
+                "y": 2,
+                "hidden": true
+              },
+              {
+                "v": "var_2_1",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_2_0",
+                "x": 2,
+                "y": 2,
+                "hidden": true
+              },
+              {
+                "v": "var_2_1",
+                "x": 2,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 2,
+                "y": 2,
+                "hidden": false
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "Left To Column Clues",
+        "completed": 50,
+        "tmpStatus": "unlocked",
+        "clues": [
+          {
+			"type": "immediately to the left of",
+			"a": {
+				"v": "var_0_1",
+				"y": 0
+			},
+			"b": {
+				"v": "var_0_2",
+				"y": 0
+			}
+		  },
+		  {
+			"type": "immediately to the left of",
+			"a": {
+				"v": "var_0_0",
+				"y": 0
+			},
+			"b": {
+				"v": "var_2_1",
+				"y": 2
+			}
+		  },
+		  {
+			"type": "immediately to the left of",
+			"a": {
+				"v": "var_2_0",
+				"y": 2
+			},
+			"b": {
+				"v": "var_1_1",
+				"y": 1
+			}
+		  }
+        ],
+        "solution": [
+          [
+            "var_0_0",
+            "var_0_1",
+            "var_0_2"
+          ],
+          [
+            "var_1_0",
+            "var_1_1",
+            "var_1_2"
+          ],
+          [
+            "var_2_0",
+            "var_2_1",
+            "var_2_2"
+          ]
+        ],
+        "progress": [
+          [
+            [
+              {
+                "v": "var_0_0",
+                "x": 0,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_1",
+                "x": 0,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_2",
+                "x": 0,
+                "y": 0,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_0_0",
+                "x": 1,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_1",
+                "x": 1,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_2",
+                "x": 1,
+                "y": 0,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_0_0",
+                "x": 2,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_1",
+                "x": 2,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_2",
+                "x": 2,
+                "y": 0,
+                "hidden": false
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "v": "var_1_0",
+                "x": 0,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_1",
+                "x": 0,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_2",
+                "x": 0,
+                "y": 1,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_1_0",
+                "x": 1,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_1",
+                "x": 1,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_2",
+                "x": 1,
+                "y": 1,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_1_0",
+                "x": 2,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_1",
+                "x": 2,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_2",
+                "x": 2,
+                "y": 1,
+                "hidden": false
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "v": "var_2_0",
+                "x": 0,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_1",
+                "x": 0,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 0,
+                "y": 2,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_2_0",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_1",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_2_0",
+                "x": 2,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_1",
+                "x": 2,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 2,
+                "y": 2,
+                "hidden": false
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "Next to Column Clues",
+        "completed": 50,
+        "tmpStatus": "unlocked",
+        "clues": [
+          {
+			"type": "next to",
+			"a": {
+				"v": "var_0_0",
+				"y": 0
+			},
+			"b": {
+				"v": "var_1_1",
+				"y": 0
+			}
+		  },
+          {
+			"type": "next to",
+			"a": {
+				"v": "var_0_2",
+				"y": 0
+			},
+			"b": {
+				"v": "var_1_1",
+				"y": 0
+			}
+		  },
+		  {
+			"type": "next to",
+			"a": {
+				"v": "var_2_2",
+				"y": 0
+			},
+			"b": {
+				"v": "var_0_1",
+				"y": 0
+			}
+		  }
+        ],
+        "solution": [
+          [
+            "var_0_0",
+            "var_0_1",
+            "var_0_2"
+          ],
+          [
+            "var_1_0",
+            "var_1_1",
+            "var_1_2"
+          ],
+          [
+            "var_2_0",
+            "var_2_1",
+            "var_2_2"
+          ]
+        ],
+        "progress": [
+          [
+            [
+              {
+                "v": "var_0_0",
+                "x": 0,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_1",
+                "x": 0,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_2",
+                "x": 0,
+                "y": 0,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_0_0",
+                "x": 1,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_1",
+                "x": 1,
+                "y": 0,
+                "hidden": false
+              },
+              {
+                "v": "var_0_2",
+                "x": 1,
+                "y": 0,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_0_0",
+                "x": 2,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_1",
+                "x": 2,
+                "y": 0,
+                "hidden": true
+              },
+              {
+                "v": "var_0_2",
+                "x": 2,
+                "y": 0,
+                "hidden": false
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "v": "var_1_0",
+                "x": 0,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_1",
+                "x": 0,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_2",
+                "x": 0,
+                "y": 1,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_1_0",
+                "x": 1,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_1",
+                "x": 1,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_2",
+                "x": 1,
+                "y": 1,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_1_0",
+                "x": 2,
+                "y": 1,
+                "hidden": true
+              },
+              {
+                "v": "var_1_1",
+                "x": 2,
+                "y": 1,
+                "hidden": false
+              },
+              {
+                "v": "var_1_2",
+                "x": 2,
+                "y": 1,
+                "hidden": false
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "v": "var_2_0",
+                "x": 0,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_1",
+                "x": 0,
+                "y": 2,
+                "hidden": true
+              },
+              {
+                "v": "var_2_2",
+                "x": 0,
+                "y": 2,
+                "hidden": true
+              }
+            ],
+            [
+              {
+                "v": "var_2_0",
+                "x": 1,
+                "y": 2,
+                "hidden": true
+              },
+              {
+                "v": "var_2_1",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 1,
+                "y": 2,
+                "hidden": false
+              }
+            ],
+            [
+              {
+                "v": "var_2_0",
+                "x": 2,
+                "y": 2,
+                "hidden": true
+              },
+              {
+                "v": "var_2_1",
+                "x": 2,
+                "y": 2,
+                "hidden": false
+              },
+              {
+                "v": "var_2_2",
+                "x": 2,
+                "y": 2,
+                "hidden": false
+              }
+            ]
+          ]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+ <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Unlock Puzzles</h1>
+      <button class='button button-assertive' ng-click='closeUnlock()'><i class='ion-close-circled'></i> CLOSE</button>
+    </ion-header-bar>
+    <ion-content>
+		<div ng-if='showAdUnlock'>
+			<button class='button button-assertive button-block' ng-click='showVideo()'>Watch Video to unlock puzzles</button>
+
+			<hr>
+
+			<div ng-if='unlock.puzzle.time.count'>
+				<center>... or wait {{unlock.puzzle.time.count}} to puzzle unlock...</center>
+			</div>
+			<br>
+		</div>
+		<div ng-if='!showAdUnlock'>
+			<br>
+			<center>
+				Please complete the open puzzles to unlock more puzzles.
+			</center>
+		</div>
+    </ion-content>
+  </ion-modal-view>

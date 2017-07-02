@@ -1,0 +1,59 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">How to Play</h1>
+        <button class='button button-assertive' ng-click='closeTutorialIntro()'><i class='ion-close-circled'></i> CLOSE</button>
+    </ion-header-bar>
+    <ion-pane ng-controller='IntroCtrl'>
+        <ion-tabs class="tabs-positive tabs-icon-top">
+            <ion-tab title="Middle Clues" icon="ion-more" ng-if="showClue === 0">
+                <ion-nav-view name="tab-middle-clues">
+                    <ion-content overflow-scroll='true'>
+                        <div ng-include="'templates/startpack/middle_clues.html'"></div>
+                    </ion-content>
+                </ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Same Column Clues" icon="ion-android-more-vertical" ng-if="showClue === 1">
+                <ion-nav-view name="tab-same-column-clues">
+                    <ion-content overflow-scroll='true'>
+                        <div ng-include="'templates/startpack/same_pos_clues.html'"></div>
+                    </ion-content>
+                </ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Left To Column Clues" icon="ion-arrow-right-b" ng-if='showClue === 2'>
+                <ion-nav-view name="tab-same-column-clues">
+                    <ion-content overflow-scroll='true'>
+                        <div ng-include="'templates/startpack/left_to_clues.html'"></div>
+                    </ion-content>
+                </ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Next To Column Clues" icon="ion-code" ng-if='showClue === 3'>
+                <ion-nav-view name="tab-same-column-clues">
+                    <ion-content overflow-scroll='true'>
+                        <div ng-include="'templates/startpack/next_to_clues.html'"></div>
+                    </ion-content>
+                </ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Clues Handbook" icon="ion-help-buoy" ng-if="true">
+                <ion-nav-view name="tab-clues-handbook">
+                    <ion-content overflow-scroll='true'>
+                        <div ng-include="'templates/startpack/handbook.html'"></div>
+                    </ion-content>
+                </ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Goal" icon="ion-android-checkmark-circle" ng-if="true">
+                <ion-nav-view name="tab-goal">
+                    <ion-content overflow-scroll='true'>
+                        <div ng-include="'templates/startpack/goal.html'"></div>
+                    </ion-content>
+                </ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Game UI" icon="ion-ios-football" ng-if="true">
+                <ion-nav-view name="tab-game-ui">
+                    <ion-content overflow-scroll='true'>
+                        <div ng-include="'templates/startpack/interface.html'"></div>
+                    </ion-content>
+                </ion-nav-view>
+            </ion-tab>
+        </ion-tabs>
+    </ion-pane>
+</ion-modal-view>

@@ -1,0 +1,72 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Clues Handbook</h1>
+      <button class='button button-assertive'  ng-click='closeHandbook()'>Close</button>
+    </ion-header-bar>
+    <ion-content>
+		<ul class='set_0 handbook'>
+		<li>
+			<p>
+				The symbol
+					<span class='ion-arrow-right-b tut_symbol_size'></span>
+					means "immediately to the left of". For example the clue
+					<span class='var_1_1 tut_size' ></span>
+					<span class='ion-arrow-right-b tut_symbol_size'></span>
+					<span class='var_0_3 tut_size'></span>
+					means that
+					<span class='var_1_1 tut_size' ></span>
+					is immediately to the left of
+					<span class='var_0_3 tut_size'></span>
+			</p>
+			</li>
+		<li>
+			<p>
+				The symbol
+					<span class='ion-arrow-left-b tut_symbol_size'></span>
+					<span class='ion-arrow-right-b tut_symbol_size'></span>
+				means "next to". For example the clue
+					<span class='var_3_1 tut_size' ></span>
+					<span class='ion-arrow-left-b tut_symbol_size'></span>
+					<span class='ion-arrow-right-b tut_symbol_size'></span>
+					<span class='var_1_3 tut_size'></span>
+				means that
+					<span class='var_3_1 tut_size' ></span>
+				is immediately to the the left OR right of
+					<span class='var_1_3 tut_size'></span>
+				and vice-versa.
+			</p>
+			</li>
+		<li>
+			<p>
+				The symbol
+					<span class='ion-android-more-vertical tut_symbol_size'></span>
+				means "at the same column". For example the clue
+					<span class='var_0_0 tut_size' ></span>
+					<span class='ion-android-more-vertical tut_symbol_size'></span>
+					<span class='var_3_2 tut_size'></span>
+				means that <span class='var_0_0 tut_size' ></span>
+				and
+					<span class='var_3_2 tut_size'></span>
+				are at the same Board column.
+			</p>
+			</li>
+			<li>
+			<p>
+				The symbol
+					<span class='ion-more tut_symbol_size'></span>
+				means "in the middle". For example the clue
+					<span class='ion-more tut_symbol_size'></span>
+					<span class='var_0_3 tut_size' ></span>
+					<span class='ion-more tut_symbol_size'></span>
+				would mean that
+				<span class='var_0_3 tut_size' ></span>
+				is in the middle columns of the Board.
+			</p>
+			</li>
+			<li>
+				<div class='button button-block button-assertive' ng-click='tutorialVideo()'>Solving tutorial Video</div>
+			</li>
+		</ul>
+		
+    </ion-content>
+  </ion-modal-view>

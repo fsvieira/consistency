@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widget 
+	id="com.fsvieira.consistency" 
+	version="1.1.4" xmlns="http://www.w3.org/ns/widgets" 
+	xmlns:cdv="http://cordova.apache.org/ns/1.0"
+	android-versionCode="100104" 
+>
+  <name>Consistency</name>
+  <description>
+	Solve logical puzzles using clues to deduce all items locations.
+  </description>
+  <author email="sv.filipe@gmail.com" href="http://fsvieira.com/">
+    Filipe dos Santos Vieira
+  </author>
+  <content src="index.html"/>
+  
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+
+  <access origin="*"/>
+  
+  <preference name="webviewbounce" value="false"/>
+  <preference name="UIWebViewBounce" value="false"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="BackupWebStorage" value="none"/>
+  <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+  
+  <feature name="StatusBar">
+    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+  <platform name="android">
+    <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
+    <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
+    <icon src="resources/android/icon/drawable-hdpi-icon.png" density="hdpi"/>
+    <icon src="resources/android/icon/drawable-xhdpi-icon.png" density="xhdpi"/>
+	
+	<preference name="android-manifest/@android:installLocation" value="auto" />
+  </platform>
+  <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
+</widget>

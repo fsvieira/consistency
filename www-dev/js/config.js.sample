@@ -1,0 +1,7 @@
+var zebra = require("./zebra.js");
+
+zebra.constant("config", {
+	appnext: {
+		id: "<APPNEXT ID HERE>"
+	}
+});
