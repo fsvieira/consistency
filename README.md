@@ -37,4 +37,11 @@ Features:
 	* Android: https://play.google.com/store/apps/details?id=com.fsvieira.consistency
 	* Desktop: https://fsvieira.itch.io/consistency
 
+# Contribute
+	There is number of ways to make a contribution to this project, you can contribute with code, testing, distribution and 
+	any other way you see fit. 
+	
+	Rigth now I really would like to add more themes/images sets to the game, and so I am seeking for people artistic inclined 
+	to add more images sets to the game, they don't need to be perfect but they must have a consistency look and feel.
+
 	
