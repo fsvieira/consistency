@@ -33,8 +33,8 @@ Features:
 - All puzzle progress is automatically saved.
 
 # Play
- * Android: [https://play.google.com/store/apps/details?id=com.fsvieira.consistency]
- * Desktop: [https://fsvieira.itch.io/consistency]
+ * Android: https://play.google.com/store/apps/details?id=com.fsvieira.consistency
+ * Desktop: https://fsvieira.itch.io/consistency
 
 # Contribute
 There is number of ways to make a contribution to this project, you can contribute with code, testing, distribution and 
