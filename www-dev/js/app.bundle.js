@@ -23,7 +23,7 @@
 	};
 	resolve = function (scope, tree, path, fullPath, state, id) {
 		var name, dir, exports, module, fn, found, ext;
-		path = path.split(/[\\/]/);
+		path = path.split('/');
 		name = path.pop();
 		if ((name === '.') || (name === '..')) {
 			path.push(name);
@@ -112,7 +112,7 @@
 	"consistency": {
 		"www-dev": {
 			"js": {
-				"app.dev.js": function (exports, module, require) {
+				"app.js": function (exports, module, require) {
 					/* App */
 					require("./zebra.js");
 
@@ -1594,12 +1594,12 @@
 						a.replace(/\s/g,"");a.match(/^\{.*\}$/)||q(new sjcl.exception.invalid("json decode: this isn't json!"));a=a.replace(/^\{|\}$/g,"").split(/,/);var b={},c,d;for(c=0;c<a.length;c++)(d=a[c].match(/^\s*(?:(["']?)([a-z][a-z0-9]*)\1)\s*:\s*(?:(-?\d+)|"([a-z0-9+\/%*_.@=\-]*)"|(true|false))$/i))||q(new sjcl.exception.invalid("json decode: this isn't json!")),d[3]?b[d[2]]=parseInt(d[3],10):d[4]?b[d[2]]=d[2].match(/^(ct|adata|salt|iv)$/)?sjcl.codec.base64.toBits(d[4]):unescape(d[4]):d[5]&&(b[d[2]]="true"===
 						d[5]);return b},e:function(a,b,c){a===s&&(a={});if(b===s)return a;for(var d in b)b.hasOwnProperty(d)&&(c&&(a[d]!==s&&a[d]!==b[d])&&q(new sjcl.exception.invalid("required parameter overridden")),a[d]=b[d]);return a},fa:function(a,b){var c={},d;for(d in a)a.hasOwnProperty(d)&&a[d]!==b[d]&&(c[d]=a[d]);return c},ea:function(a,b){var c={},d;for(d=0;d<b.length;d++)a[b[d]]!==s&&(c[b[d]]=a[b[d]]);return c}};sjcl.encrypt=sjcl.json.encrypt;sjcl.decrypt=sjcl.json.decrypt;sjcl.misc.ca={};
 						sjcl.misc.cachedPbkdf2=function(a,b){var c=sjcl.misc.ca,d;b=b||{};d=b.iter||1E3;c=c[a]=c[a]||{};d=c[d]=c[d]||{firstSalt:b.salt&&b.salt.length?b.salt.slice(0):sjcl.random.randomWords(2,0)};c=b.salt===s?d.firstSalt:b.salt;d[c]=d[c]||sjcl.misc.pbkdf2(a,c,b.iter);return{key:d[c].slice(0),salt:c.slice(0)}};
-						
+
 						module.exports = {
 							e: sjcl.encrypt,
 							d: sjcl.decrypt
 						};
-						
+
 					}
 				},
 				"services": {
@@ -2718,5 +2718,8 @@
 				}
 			}
 		}
+	},
+	"crypto": {
+
 	}
-})("consistency/www-dev/js/app.dev");
+})("consistency/www-dev/js/app");
