@@ -43,4 +43,10 @@ any other way you see fit.
 Rigth now I really would like to add more themes/images sets to the game, and so I am seeking for people artistic inclined 
 to add more images sets to the game, they don't need to be perfect but they must have a consistency look and feel.
 
+# Develop
 	
+	To run the project run:
+		- npm install
+		- gulp dist:www
+		- ionic serve (to run the server)
+		
