@@ -9,8 +9,8 @@ In pen and paper version normally you have clues like:
 4. Coffee is drunk in the green house
 ...
 
-The Consistency puzzle game is similar but with graphical clues, where a grid is alredy set with 
-all possible items (persons, fruit, ...) per cell.
+The Consistency puzzle game is similar but with graphical clues, where a grid is already set with 
+all possible items (people, fruit, ...) per cell.
 
 The goal of the puzzle game is to logically deduct all items positions in the provided grid, only one solution
 is possible and each puzzle has a different set of clues that makes it unique.
