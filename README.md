@@ -1,3 +1,6 @@
+# Website
+	https://fsvieira.github.io/consistency/
+	
 # Consistency
 
 Consistency puzzle game is a version of the well-known logic puzzle called zebra, often called Einstein's Riddle or Einstein's Puzzle because it is said to have been invented by Albert Einstein as a boy. It is also known as Sherlock puzzle because is a deduction puzzle game worth of the best detective.
