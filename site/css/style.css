@@ -100,12 +100,10 @@ body {
 
 @keyframes slidein {
   from {
-    width: 80%;
     opacity: 0;
   }
 
   to {
-    width: 100%;
     opacity: 1;
   }
 }
