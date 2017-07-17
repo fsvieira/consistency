@@ -1,0 +1,30 @@
+{
+  "name": "consistencypage",
+  "version": "1.0.0",
+  "description": "Consistency game page",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "gulp": "^3.9.1",
+    "jquery": "^3.2.1",
+    "navigo": "^5.2.0",
+    "rivets": "^0.9.6",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fsvieira/consistency.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/fsvieira/consistency/issues"
+  },
+  "homepage": "https://github.com/fsvieira/consistency#readme"
+}
