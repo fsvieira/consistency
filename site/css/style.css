@@ -33,7 +33,7 @@ body {
     padding: 0.5em;
     background-color: #333;
     color: white;
-    border: 2px solid white;
+    margin: 3px;
     text-decoration: none;
     float: left;
 }
@@ -94,7 +94,7 @@ body {
 
 
 .page {
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
   animation-name: slidein;
 }
 
@@ -102,8 +102,29 @@ body {
   from {
     opacity: 0;
   }
-
+  
   to {
     opacity: 1;
+  }
+}
+
+.menu .actions .selected {
+    background-color: #008B8B;
+    color: black;
+    border-radius: 5px;
+    animation-duration: 0.3s;
+    animation-name: colorchange;
+}
+
+@keyframes colorchange {
+  from {
+    color: white;
+    background-color: #333;
+  }
+  
+  to {
+    border-radius: 5px;
+    color: black;
+    background-color: #008B8B;
   }
 }
