@@ -1,5 +1,6 @@
 # Website
-	https://fsvieira.github.io/consistency/
+
+https://fsvieira.github.io/consistency/
 	
 # Consistency
 
