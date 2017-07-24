@@ -78,8 +78,7 @@ function (
 	$http,
 	$q,
 	$ionicPlatform,
-	db,
-	videoads
+	db
 ) {
 	"use strict";
 	// localStorage.removeItem("s");
@@ -106,16 +105,9 @@ function (
 	}
 
 	function addPack (pack) {
-		var status = pack.id < 1?"unlocked":"locked";
+		var status = "unlocked";
 		var unlock = "null";
 		var sql = [];
-
-		if (status==="unlocked") {
-			unlock = "'" + ed.e(s, JSON.stringify({
-				id: pack.id,
-				type: "start"
-			})) + "'";
-		}
 
 		sql.push("INSERT OR REPLACE INTO packs (id,name,status,completed," +
 				"total, unlock) VALUES (" +
@@ -143,23 +135,8 @@ function (
 			// setup puzzles,
 			var gIndex = index;
 			grid.puzzles.forEach(function (puzzle, index) {
-				var status = "locked";
-
-				if (gIndex === 0) {
-					if (index < 4) {
-						status = "unlocked";
-					}
-				}
-				else if (index < 2) {
-					status = "unlocked";
-				}
-
+				var status = "unlocked";
 				var unlock = 0;
-				if (status==="unlocked") {
-					unlock = {
-						type: "start"
-					};
-				}
 
 				sql.push("INSERT OR REPLACE INTO puzzles(" +
 						"packId,gridPos,status," +
@@ -190,9 +167,7 @@ function (
 	}
 
 	function countPacks () {
-		db.exec("SELECT count(id) as cnt FROM packs WHERE " +
-				" status=\"unlocked\";"
-		).then(
+		db.exec("SELECT count(id) as cnt FROM packs;").then(
 			function (col) {
 				if (col.length === 1) {
 					data.total = col[0].cnt;
@@ -204,47 +179,6 @@ function (
 		);
 	}
 
-	function unlockVideoPuzzles (packIndex, gridIndex) {
-		return db.exec(
-			"SELECT packId, gridPos, pos, status, data FROM puzzles WHERE " +
-			" packId=" + packIndex +
-			" AND gridPos=" + gridIndex +
-			" AND status=\"locked\" ORDER BY pos ASC LIMIT 1;"
-		).then(function (puzzles) {
-			var stmts = [];
-			puzzles.forEach(function (puzzle) {
-				// alert("TODO: Unlock puzzle " + (col[i].pos + 1) + " !!");
-				var data = JSON.parse(
-					ed.d(s, puzzle.data)
-				);
-
-				data.unlock = {
-					type: "video",
-					date: new Date().toISOString()
-				};
-
-				stmts.push(
-					"UPDATE puzzles" +
-					" SET status=\"unlocked\"," +
-					" time=null," +
-					" data='" + ed.e(
-						s,
-						JSON.stringify(data)
-					) + "'" +
-					" WHERE pos=" + puzzle.pos +
-					" AND packId=" + packIndex +
-					" AND gridPos=" + gridIndex +";"
-				);
-			});
-
-			return db.run(stmts).then(function () {
-				return puzzles;
-			}, function (err) {
-				return err;
-			});
-		});
-	}
-
 	function getFile (path) {
 		var url = "res/packs/" + path;
 
@@ -254,87 +188,6 @@ function (
 
 		return open(url).then(
 			addPack
-		);
-	}
-
-	function checkPuzzles () {
-		return db.exec(
-			"SELECT * FROM (SELECT packId, gridPos, count(pos) AS lockedId " +
-			" FROM puzzles WHERE completed=100 group by packId, gridPos) " +
-			" AS p " +
-			" LEFT JOIN puzzles ON p.lockedId=puzzles.pos WHERE " +
-			" puzzles.packId=p.packId AND puzzles.gridPos=p.gridPos " +
-			" AND p.lockedId=pos AND puzzles.status=\"locked\" AND time=null;"
-		).then(
-			function (puzzles) {
-				var stmts = [];
-				puzzles.forEach(function (puzzle) {
-					var data = JSON.parse(
-						ed.d(s, puzzle.data)
-					);
-
-					data.unlock = {
-						type: "video",
-						date: new Date().toISOString()
-					};
-
-					stmts.push(
-						"UPDATE puzzles" +
-						" SET status=\"unlocked\"," +
-						" time=null," +
-						" data='" + ed.e(
-							s,
-							JSON.stringify(data)
-						) + "'" +
-						" WHERE pos=" + puzzle.pos +
-						" AND packId=" + puzzle.packId +
-						" AND gridPos=" + puzzle.gridPos +";"
-					);
-				});
-
-				return db.run(stmts).then(function () {
-					return puzzles;
-				}, function (err) {
-					return err;
-				});
-			},
-			function (err) {
-				alert("ERR: " + JSON.stringify(err));
-			}
-		);
-	}
-
-	function checkPacks () {
-		countPacks();
-
-		db.exec("SELECT count(id) as cnt FROM packs WHERE " +
-				" status=\"locked\" "+
-				" limit 2;"
-		).then(
-			function (col) {
-				var locked = col[0].cnt;
-				if (locked < 2) {
-					return db.exec("SELECT id FROM packs " +
-						"order by id desc limit 1;")
-					.then(
-						function (col) {
-							var max = 0;
-							if (col.length === 1) {
-								max = col[0].id+1;
-							}
-
-							for (var index=max;
-								index<max+2-locked;
-								index++
-							) {
-								// getFile("pack_"+index+".json.bz2")
-								getFile("pack_"+index+".json")
-									.then(countPacks);
-							}
-						}
-					);
-				}
-			}
 		);
 	}
 
@@ -381,16 +234,21 @@ function (
 				");"
 		]
 	)
-	.then(checkPacks)
-	.then(checkPuzzles);
+	.then(function () { return getFile("pack_0.json"); })
+	.then(function () { return getFile("pack_1.json"); })
+	.then(function () { return getFile("pack_2.json"); })
+	.then(function () { return getFile("pack_3.json"); })
+	.then(function () { return getFile("pack_4.json"); })
+	.then(function () { return getFile("pack_5.json"); })
+	.then(function () { return getFile("pack_6.json"); })
+	.then(countPacks);
 
 	/* Public Packs Service functions, */
 
 	// Get packs with paging support,
 	function getPacks (a, b) {
-		return db.exec("SELECT * FROM packs WHERE " +
-				" status=\"unlocked\" AND id >= " +
-				a + " AND id <= " + b + " order by id asc;"
+		return db.exec("SELECT * FROM packs " +
+				"WHERE id >= " + a + " AND id <= " + b + " order by id asc;"
 		);
 	}
 
@@ -486,7 +344,6 @@ function (
 								);
 
 								if (
-									!puzzle.unlock ||
 									puzzle.info.id !== +packIndex ||
 									puzzle.info.gid !== +gridIndex ||
 									puzzle.info.pos !== +puzzleIndex
@@ -538,23 +395,6 @@ function (
 		}
 	}
 
-	function puzzleUnlock (
-		packIndex,
-		gridIndex,
-		puzzleIndex
-	) {
-		return db.exec(
-			"UPDATE puzzles SET " +
-			" time=null," +
-			" status=\"unlocked\"" +
-			" WHERE " +
-			" packId=" + packIndex +
-			" AND gridPos=" + gridIndex +
-			" AND pos=" + puzzleIndex +
-			";"
-		);
-	}
-
 	function savePuzzleProgress (
 		packIndex,
 		gridIndex,
@@ -593,109 +433,7 @@ function (
 			);
 		}
 
-		return db.run(stmts).then(function () {
-			if (completed === 100) {
-				return db.exec(
-					"SELECT count(pos) AS cnt FROM puzzles" +
-					" WHERE status=\"unlocked\" AND" +
-					" completed < 100" +
-					" AND packId=" + packIndex +
-					" AND gridPos=" + gridIndex + ";"
-				).then(function (stats) {
-					if (stats.length === 1 && stats[0].cnt === 0) {
-						return db.exec(
-							"SELECT * FROM puzzles WHERE" +
-							" status=\"locked\"" +
-							" AND packId=" + packIndex +
-							" AND gridPos=" + gridIndex +
-							" order by pos asc limit 1;"
-						).then(function (lockedPuzzles) {
-							if (lockedPuzzles.length > 0) {
-								if (!window.cordova || videoads.sawAd()) {
-									return unlockVideoPuzzles(
-										packIndex,
-										gridIndex
-									).then(function () {
-										return "UNLOCKED_PUZZLE";
-									});
-								}
-								else {
-									var stmts = [];
-									lockedPuzzles.forEach(function (puzzle) {
-										var time = new Date().getTime() +
-											puzzle.pos * 60 * 60 * 1000;
-
-										var data = JSON.parse(
-											ed.d(s, puzzle.data)
-										);
-
-										data.unlock = {
-											type: "timed",
-											time: time
-										};
-
-										stmts.push(
-											"UPDATE puzzles" +
-											" SET time=" + time + "," +
-											" data='" + ed.e(
-												s,
-												JSON.stringify(data)
-											) + "'" +
-											" WHERE pos=" + puzzle.pos +
-											" AND packId=" + packIndex +
-											" AND gridPos=" + gridIndex +";"
-										);
-									});
-
-									return db.run(stmts).then(
-										function () {
-											return "TIMED_PUZZLE";
-										}
-									);
-								}
-							}
-							else {
-								return db.exec(
-									"SELECT id FROM packs " +
-									"WHERE status=\"locked\" " +
-									"AND id=" + (+packIndex+1) + ";"
-								).then(function (lockedPack) {
-									if (lockedPack.length > 0) {
-										var sql = [];
-										var unlock = "'" + ed.e(
-											s,
-											JSON.stringify({
-												id: packIndex,
-												type: "solve"
-											})
-										) + "'";
-
-										sql.push(
-											"UPDATE packs SET " +
-											" status=\"unlocked\", " +
-											" unlock=" + unlock +
-											" WHERE id=" +
-											lockedPack[0].id + ";"
-										);
-
-										return db.run(sql).then(
-											function () {
-												return "UNLOCK_PACK";
-											}
-										);
-									}
-									else {
-										return $q(function (resolve) {
-											resolve();
-										});
-									}
-								});
-							}
-						});
-					}
-				});
-			}
-		});
+		return db.run(stmts);
 	}
 
 	return {
@@ -704,9 +442,7 @@ function (
 		getPack: getPack,
 		getPuzzles: getPuzzles,
 		getPuzzle: getPuzzle,
-		savePuzzleProgress: savePuzzleProgress,
-		puzzleUnlock: puzzleUnlock,
-		unlockVideoPuzzles: unlockVideoPuzzles
+		savePuzzleProgress: savePuzzleProgress
 	};
 
 }]);
