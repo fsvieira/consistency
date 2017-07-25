@@ -1,118 +1,139 @@
 {
-  "name": "Consistency",
-  "version": "1.0.1",
-  "description": "Constrain staisfacion puzzle.",
-  "main": "desktop/app.electron.js",
-  "dependencies": {
-    "gulp": "^3.5.6",
-    "gulp-concat": "^2.2.0",
-    "gulp-minify-css": "^0.3.0",
-    "gulp-rename": "^1.2.0"
-  },
-  "devDependencies": {
-    "bower": "^1.3.3",
-    "del": "~1.1.1",
-    "electron": "^1.6.2",
-    "event-stream": "^3.3.4",
-    "gulp": "~3.8.10",
-    "gulp-csslint": "~0.1.5",
-    "gulp-electron": "^0.1.3",
-    "gulp-htmlhint": "0.0.9",
-    "gulp-jscs": "~1.4.0",
-    "gulp-jshint": "~1.9.0",
-    "gulp-minify-html": "^1.0.6",
-    "gulp-obfuscate": "~0.2.9",
-    "gulp-uglify": "^2.0.0",
-    "gulp-util": "^2.2.14",
-    "gulp-webmake": "0.0.2",
-    "imagemin-optipng": "~4.2.0",
-    "jshint-stylish": "~1.0.0",
-    "shelljs": "^0.3.0"
-  },
-  "jshintConfig": {
-    "predef": [
-      "require",
-      "angular",
-      "cordova",
-      "StatusBar",
-      "console",
-      "Media",
-      "inappbilling",
-      "SQL",
-      "alert",
-      "JSON",
-      "store",
-      "Appnext"
-    ],
-    "bitwise": true,
-    "camelcase": true,
-    "curly": true,
-    "eqeqeq": true,
-    "es3": true,
-    "forin": true,
-    "freeze": true,
-    "immed": true,
-    "latedef": true,
-    "newcap": true,
-    "noempty": true,
-    "nonbsp": true,
-    "nonew": true,
-    "quotmark": true,
-    "singleGroups": true,
-    "nocomma": false,
-    "maxlen": 80,
-    "maxdepth": 6,
-    "undef": true,
-    "unused": true,
-    "strict": true,
-    "browser": true,
-    "browserify": true
-  },
-  "jscsConfig": {
-    "disallowDanglingUnderscores": true,
-    "disallowMixedSpacesAndTabs": true,
-    "disallowMultipleLineBreaks": true,
-    "disallowMultipleLineStrings": true,
-    "disallowMultipleVarDecl": true,
-    "disallowSpaceAfterObjectKeys": true,
-    "disallowSpacesInCallExpression": true,
-    "disallowTrailingComma": true,
-    "disallowTrailingWhitespace": true,
-    "disallowYodaConditions": true,
-    "disallowSpacesInsideParentheses": true,
-    "maximumLineLength": 80,
-    "requireCamelCaseOrUpperCaseIdentifiers": true,
-    "requireKeywordsOnNewLine": [
-      "else"
-    ],
-    "requireLineBreakAfterVariableAssignment": true,
-    "requireLineFeedAtFileEnd": true,
-    "requireSpaceAfterKeywords": true,
-    "requireSpaceBeforeBlockStatements": true,
-    "requireSpaceBeforeObjectValues": true,
-    "requireSpaceBetweenArguments": true,
-    "requireSpacesInForStatement": true,
-    "requireSpacesInFunctionDeclaration": {
-      "beforeOpeningRoundBrace": true,
-      "beforeOpeningCurlyBrace": true
+    "name": "Consistency",
+    "version": "1.0.1",
+    "description": "Constrain staisfacion puzzle.",
+    "main": "desktop/app.electron.js",
+    "dependencies": {
+        "cordova-android": "^6.2.3",
+        "cordova-custom-config": "^4.0.2",
+        "cordova-plugin-compat": "^1.1.0",
+        "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-market": "git+https://github.com/xmartlabs/cordova-plugin-market.git",
+        "cordova-plugin-media": "^3.0.1",
+        "cordova-plugin-whitelist": "^1.3.2",
+        "gulp": "^3.5.6",
+        "gulp-concat": "^2.2.0",
+        "gulp-minify-css": "^0.3.0",
+        "gulp-rename": "^1.2.0",
+        "market": "^1.0.0"
     },
-    "validateIndentation": "\t",
-    "validateLineBreaks": "LF",
-    "validateParameterSeparator": ", ",
-    "validateQuoteMarks": "\""
-  },
-  "cssConfig": {
-    "box-model": true,
-    "box-sizing": false
-  },
-  "cordovaPlugins": [
-    {
-      "id": "cordova-plugin-ad-chartboost",
-      "locator": "../plugins/cordova-plugin-chartboost/"
+    "devDependencies": {
+        "bower": "^1.3.3",
+        "del": "~1.1.1",
+        "electron": "^1.6.2",
+        "event-stream": "^3.3.4",
+        "gulp": "~3.8.10",
+        "gulp-csslint": "~0.1.5",
+        "gulp-electron": "^0.1.3",
+        "gulp-htmlhint": "0.0.9",
+        "gulp-jscs": "~1.4.0",
+        "gulp-jshint": "~1.9.0",
+        "gulp-minify-html": "^1.0.6",
+        "gulp-obfuscate": "~0.2.9",
+        "gulp-uglify": "^2.0.0",
+        "gulp-util": "^2.2.14",
+        "gulp-webmake": "0.0.2",
+        "imagemin-optipng": "~4.2.0",
+        "jshint-stylish": "~1.0.0",
+        "shelljs": "^0.3.0"
     },
-    "cordova-plugin-media",
-    "cordova-plugin-market",
-    "cordova-plugin-whitelist",
-    "cordova-custom-config"
-  ]
+    "jshintConfig": {
+        "predef": [
+            "require",
+            "angular",
+            "cordova",
+            "StatusBar",
+            "console",
+            "Media",
+            "inappbilling",
+            "SQL",
+            "alert",
+            "JSON",
+            "store",
+            "Appnext"
+        ],
+        "bitwise": true,
+        "camelcase": true,
+        "curly": true,
+        "eqeqeq": true,
+        "es3": true,
+        "forin": true,
+        "freeze": true,
+        "immed": true,
+        "latedef": true,
+        "newcap": true,
+        "noempty": true,
+        "nonbsp": true,
+        "nonew": true,
+        "quotmark": true,
+        "singleGroups": true,
+        "nocomma": false,
+        "maxlen": 80,
+        "maxdepth": 6,
+        "undef": true,
+        "unused": true,
+        "strict": true,
+        "browser": true,
+        "browserify": true
+    },
+    "jscsConfig": {
+        "disallowDanglingUnderscores": true,
+        "disallowMixedSpacesAndTabs": true,
+        "disallowMultipleLineBreaks": true,
+        "disallowMultipleLineStrings": true,
+        "disallowMultipleVarDecl": true,
+        "disallowSpaceAfterObjectKeys": true,
+        "disallowSpacesInCallExpression": true,
+        "disallowTrailingComma": true,
+        "disallowTrailingWhitespace": true,
+        "disallowYodaConditions": true,
+        "disallowSpacesInsideParentheses": true,
+        "maximumLineLength": 80,
+        "requireCamelCaseOrUpperCaseIdentifiers": true,
+        "requireKeywordsOnNewLine": [
+            "else"
+        ],
+        "requireLineBreakAfterVariableAssignment": true,
+        "requireLineFeedAtFileEnd": true,
+        "requireSpaceAfterKeywords": true,
+        "requireSpaceBeforeBlockStatements": true,
+        "requireSpaceBeforeObjectValues": true,
+        "requireSpaceBetweenArguments": true,
+        "requireSpacesInForStatement": true,
+        "requireSpacesInFunctionDeclaration": {
+            "beforeOpeningRoundBrace": true,
+            "beforeOpeningCurlyBrace": true
+        },
+        "validateIndentation": "\t",
+        "validateLineBreaks": "LF",
+        "validateParameterSeparator": ", ",
+        "validateQuoteMarks": "\""
+    },
+    "cssConfig": {
+        "box-model": true,
+        "box-sizing": false
+    },
+    "cordovaPlugins": [
+        {
+            "id": "cordova-plugin-ad-chartboost",
+            "locator": "../plugins/cordova-plugin-chartboost/"
+        },
+        "cordova-plugin-media",
+        "cordova-plugin-market",
+        "cordova-plugin-whitelist",
+        "cordova-custom-config"
+    ],
+    "cordova": {
+        "platforms": [
+            "android"
+        ],
+        "plugins": {
+            "cordova-custom-config": {},
+            "cordova-plugin-compat": {},
+            "cordova-plugin-file": {},
+            "cordova-plugin-media": {},
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-market": {}
+        }
+    }
 }

@@ -1,40 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget 
-	id="com.fsvieira.consistency" 
-	version="1.1.4" xmlns="http://www.w3.org/ns/widgets" 
-	xmlns:cdv="http://cordova.apache.org/ns/1.0"
-	android-versionCode="100104" 
->
-  <name>Consistency</name>
-  <description>
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="100104" id="com.fsvieira.consistency" version="1.1.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Consistency</name>
+    <description>
 	Solve logical puzzles using clues to deduce all items locations.
   </description>
-  <author email="sv.filipe@gmail.com" href="http://fsvieira.com/">
+    <author email="sv.filipe@gmail.com" href="http://fsvieira.com/">
     Filipe dos Santos Vieira
   </author>
-  <content src="index.html"/>
-  
-  <allow-intent href="http://*/*" />
-  <allow-intent href="https://*/*" />
-
-  <access origin="*"/>
-  
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="BackupWebStorage" value="none"/>
-  <preference name="AndroidPersistentFileLocation" value="Compatibility" />
-  
-  <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
-  </feature>
-  <platform name="android">
-    <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
-    <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
-    <icon src="resources/android/icon/drawable-hdpi-icon.png" density="hdpi"/>
-    <icon src="resources/android/icon/drawable-xhdpi-icon.png" density="xhdpi"/>
-	
-	<preference name="android-manifest/@android:installLocation" value="auto" />
-  </platform>
-  <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <platform name="android">
+        <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
+        <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
+        <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
+        <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png" />
+        <preference name="android-manifest/@android:installLocation" value="auto" />
+    </platform>
+    <icon src="resources/android/icon/drawable-xhdpi-icon.png" />
+    <engine name="android" spec="^6.2.3" />
+    <plugin name="cordova-custom-config" spec="^4.0.2" />
+    <plugin name="cordova-plugin-compat" spec="^1.1.0" />
+    <plugin name="cordova-plugin-file" spec="^4.3.3" />
+    <plugin name="cordova-plugin-market" spec="git+https://github.com/xmartlabs/cordova-plugin-market.git" />
+    <plugin name="cordova-plugin-media" spec="^3.0.1" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
 </widget>
