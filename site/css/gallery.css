@@ -1,0 +1,66 @@
+.gallery {
+    width: 100%;
+    height: 25vh;
+    max-height: 16em;
+    position: relative;
+    padding-bottom: 4px;
+    perspective: 800px;
+}
+
+.gallery.big {
+    position: absolute;
+    width: 100%;
+    height: 99vh;
+    max-height: 99vh;
+    padding-bottom: 4px;
+    perspective: 800px;
+    left: 0;
+    top: 0;
+    background-color: rgba(60, 60, 60, 0.5);
+    overflow: hidden;
+}
+
+.gallery .image {
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 0;
+    max-height: 30em;
+    box-shadow: 4px 4px 2px -2px gray;
+    background-color: #eee;
+    -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s, left 2s, right 2s;
+    -moz-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s, left 2s, right 2s;
+    -o-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s, left 2s, right 2s;
+    transition: width 2s, height 2s, background-color 2s, transform 2s, left 2s, right 2s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gallery .selected {
+    height: 100%;
+    width: 50%;
+    z-index: 20;
+}
+
+.gallery .back,
+.gallery .next {
+    height: 80%;
+    width: 40%;
+    top: 50%;
+    z-index: 10;
+    opacity: 0.8;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.gallery .back {
+    left: 0;
+    transform: rotate3d(0, 1, 0, 70deg) translateY(-50%);
+}
+
+.gallery .next {
+    right: 0;
+    transform: rotate3d(0, -1, 0, 70deg) translateY(-50%);
+}

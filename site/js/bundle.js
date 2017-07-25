@@ -510,6 +510,66 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 },{}],2:[function(require,module,exports){
+function clearSelections(images) {
+    images.forEach(function (img) {
+        img.className = img.className.replace("selected", "").replace("back", "").replace("next", "").trim();
+    });
+}
+
+function toggleGallery(gallery) {
+    if (gallery.className.indexOf("big") !== -1) {
+        gallery.className = gallery.className.replace("big", "").trim();
+    } else {
+        gallery.className += " big";
+    }
+}
+
+function gallery() {
+    document.querySelectorAll(".gallery").forEach(function (gallery) {
+        const images = gallery.querySelectorAll(".image");
+        var selected = 0;
+
+        gallery.onclick = function () {
+            toggleGallery(gallery);
+        };
+
+        clearSelections(images);
+
+        images[0].className += " selected";
+        if (images.length > 1) {
+            images[1].className += " next";
+        }
+
+        images.forEach(function (img, index) {
+            img.onclick = function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (index !== selected) {
+                    clearSelections(images);
+
+                    selected = index;
+
+                    if (index > 0) {
+                        images[index - 1].className += " back";
+                    }
+
+                    if (index < images.length - 1) {
+                        images[index + 1].className += " next";
+                    }
+
+                    img.className += " selected";
+                } else {
+                    toggleGallery(gallery);
+                }
+            };
+        });
+    });
+}
+
+module.exports = gallery;
+
+},{}],3:[function(require,module,exports){
 const Navigo = require("navigo");
 
 const router = new Navigo(null, true, '#!');
@@ -517,6 +577,8 @@ const router = new Navigo(null, true, '#!');
 const cache = { templates: {} };
 
 const content = document.getElementById("content");
+
+const gallery = require("./gallery");
 
 function getPage(url) {
     const html = cache.templates[url];
@@ -536,9 +598,11 @@ function getPage(url) {
 function open(url) {
     return getPage(url).then(html => {
         content.innerHTML = html;
+        gallery();
     });
 }
 
+// TODO: we need to load pages on DOM, and just hide and show.
 // preload pages,
 ['site/pages/play.html', 'site/pages/contribute.html', 'site/pages/credits.html', 'site/pages/pepperandcarrot.html', 'site/pages/about.html'].forEach(getPage);
 
@@ -579,4 +643,4 @@ router.on("/play", function () {
 
 router.navigate("/");
 
-},{"navigo":1}]},{},[2]);
+},{"./gallery":2,"navigo":1}]},{},[3]);

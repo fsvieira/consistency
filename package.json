@@ -11,6 +11,7 @@
     "gulp": "^3.9.1",
     "jquery": "^3.2.1",
     "navigo": "^5.2.0",
+    "photoswipe": "^4.1.2",
     "rivets": "^0.9.6",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"

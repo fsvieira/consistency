@@ -6,6 +6,8 @@ const cache = {templates: {}};
 
 const content = document.getElementById("content");
 
+const gallery = require("./gallery");
+
 function getPage (url) {
     const html = cache.templates[url];
 
@@ -25,9 +27,12 @@ function getPage (url) {
 function open (url) {
     return getPage(url).then((html) => {
         content.innerHTML = html;
+        gallery();
     });
 }
 
+
+// TODO: we need to load pages on DOM, and just hide and show.
 // preload pages,
 [
     'site/pages/play.html',
