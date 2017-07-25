@@ -641,6 +641,6 @@ router.on("/play", function () {
     open('site/pages/about.html');
 }).resolve();
 
-router.navigate("/");
+// router.navigate("/");
 
 },{"./gallery":2,"navigo":1}]},{},[3]);

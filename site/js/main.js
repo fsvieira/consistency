@@ -83,6 +83,6 @@ router
     })
     .resolve();
 
-router.navigate("/");
+// router.navigate("/");
 
 
