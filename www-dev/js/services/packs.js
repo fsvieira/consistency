@@ -73,7 +73,7 @@ function getClues (clues) {
 }
 
 zebra.factory("packs", [
-	"$http", "$q", "$ionicPlatform", "db", "videoads",
+	"$http", "$q", "$ionicPlatform", "db",
 function (
 	$http,
 	$q,

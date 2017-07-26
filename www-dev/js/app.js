@@ -14,7 +14,6 @@ require("./controllers/puzzle.js");
 require("./controllers/tutorial.js");
 
 /* Services */
-require("./services/videoads.js");
 require("./services/packs.js");
 require("./services/audio.js");
 

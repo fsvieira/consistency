@@ -2,7 +2,7 @@ var zebra = require("../zebra.js");
 
 zebra.controller("PuzzleCtrl", [
 	"$scope", "packs", "$state", "$stateParams", "$window",
-	"$ionicModal", "$ionicPopup", "audio", "videoads",
+	"$ionicModal", "$ionicPopup", "audio",
 	"$ionicHistory", "$location", "$timeout",
 function (
 	$scope,
@@ -13,7 +13,6 @@ function (
 	$ionicModal,
 	$ionicPopup,
 	audio,
-	videoads,
 	$ionicHistory,
 	$location,
 	$timeout
@@ -195,17 +194,7 @@ function (
 					}
 				}
 
-				if ($stateParams.puzzleIndex !== "-1" &&
-					$scope.pack.type !== "tutorial"
-				) {
-					videoads.showAd().then(
-						back,
-						back
-					);
-				}
-				else {
-					back();
-				}
+				back();
 			});
 		}
 
@@ -246,18 +235,7 @@ function (
 		}).then(function (res) {
 			restartLock = true;
 			if (res) {
-				if (
-					$stateParams.puzzleIndex !== "-1" &&
-					$scope.pack.type !== "tutorial"
-				) {
-					videoads.showAd().then(
-						restart,
-						restart
-					);
-				}
-				else {
-					restart();
-				}
+				restart();
 			}
 		});
 	};

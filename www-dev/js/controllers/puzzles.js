@@ -2,7 +2,7 @@ var zebra = require("../zebra.js");
 
 zebra.controller("PuzzlesCtrl", [
 	"$scope", "packs", "$stateParams", "$interval",
-	"$state", "$ionicModal", "videoads",
+	"$state", "$ionicModal",
 function (
 	$scope,
 	packs,

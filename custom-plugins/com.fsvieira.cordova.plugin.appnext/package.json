@@ -1,0 +1,30 @@
+{
+  "name": "com.fsvieira.cordova.plugin.vungle",
+  "version": "1.0.0",
+  "description": "Show Vungle ads",
+  "cordova": {
+    "id": "com.fsvieira.cordova.plugin.appnext",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "ad",
+    "video",
+    "appnext",
+    "monetisation",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Filipe Vieira",
+  "license": "MIT",
+  "homepage": "http://www.fsvieira.com"
+}
