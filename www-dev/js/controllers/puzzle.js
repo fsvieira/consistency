@@ -3,7 +3,7 @@ var zebra = require("../zebra.js");
 zebra.controller("PuzzleCtrl", [
 	"$scope", "packs", "$state", "$stateParams", "$window",
 	"$ionicModal", "$ionicPopup", "audio",
-	"$ionicHistory", "$location", "$timeout",
+	"$ionicHistory", "$location", "$timeout", "ads",
 function (
 	$scope,
 	packs,
@@ -15,9 +15,27 @@ function (
 	audio,
 	$ionicHistory,
 	$location,
-	$timeout
+	$timeout,
+	ads
 ) {
 	"use strict";
+
+	$scope.showAds = {};
+
+	function updateAds () {
+		ads.getAd().then(function (ad) {
+			$scope.showAds.winAd = ad.winAd;
+			$scope.showAds.restartAd = ad.restartAd;
+			$scope.showAds.badchoiceAd = ad.badchoiceAd;
+
+			// keep ads upated,
+			setTimeout(updateAds, 1000*60);
+		}, function (err) {
+			console.log(err);
+		});
+	}
+
+	updateAds();
 
 	var trigger = function () {};
 	$scope.setTrigger = function (t) {
@@ -35,14 +53,6 @@ function (
 	audio.load("add", "sounds/add.mp3");
 	audio.load("flip", "sounds/flip.mp3");
 	audio.load("win", "sounds/win.mp3");
-
-	/*$ionicModal.fromTemplateUrl("templates/puzzle/handbook.html", {
-		scope: $scope,
-		animation: "slide-in-up"
-	}).then(function (modal) {
-		$scope.handbook = modal;
-	});
-	*/
 
 	$ionicModal.fromTemplateUrl("templates/startpack/intro.html", {
 		scope: $scope,

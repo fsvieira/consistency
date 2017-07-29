@@ -16,5 +16,6 @@ require("./controllers/tutorial.js");
 /* Services */
 require("./services/packs.js");
 require("./services/audio.js");
+require("./services/ads.js");
 
 require("./services/db.js");
