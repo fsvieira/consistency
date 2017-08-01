@@ -4,6 +4,7 @@
     "description": "Constrain staisfacion puzzle.",
     "main": "desktop/app.electron.js",
     "dependencies": {
+        "com.fsvieira.cordova.plugin.appnext": "custom-plugins/com.fsvieira.cordova.plugin.appnext",
         "com.fsvieira.cordova.plugin.vungle": "file:custom-plugins/com.fsvieira.cordova.plugin.appnext",
         "cordova-android": "^6.2.3",
         "cordova-custom-config": "^4.0.2",
@@ -16,8 +17,7 @@
         "gulp-concat": "^2.2.0",
         "gulp-minify-css": "^0.3.0",
         "gulp-rename": "^1.2.0",
-        "market": "^1.0.0",
-        "com.fsvieira.cordova.plugin.appnext": "custom-plugins/com.fsvieira.cordova.plugin.appnext"
+        "market": "^1.0.0"
     },
     "devDependencies": {
         "bower": "^1.3.3",
