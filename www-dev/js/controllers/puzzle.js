@@ -170,7 +170,7 @@ function (
 			$ionicPopup.alert({
 				scope: $scope,
 				title: "Congratulations",
-				template: "You win, ready for next puzzle?",
+				templateUrl: "templates/puzzle/win.html",
 				okText: "OK",
 				okType: "button-positive"
 			}).then(function () {
@@ -241,7 +241,7 @@ function (
 		$ionicPopup.confirm({
 			scope: $scope,
 			title: "Restart",
-			template: "Restart Puzzle?"
+			templateUrl: "templates/puzzle/restart.html"
 		}).then(function (res) {
 			restartLock = true;
 			if (res) {
@@ -420,6 +420,10 @@ function (
 		checkSolution();
 	};
 
+	$scope.openAd = function (ad) {
+		ads.openAd(ad);
+	};
+
 	$scope.setItem = function () {
 		var item = $scope.board.selected.item;
 		var y = $scope.board.selected.y;
@@ -429,6 +433,12 @@ function (
 			item.v !== $scope.puzzle.solution[y][x]
 		) {
 			play("alert");
+
+			console.log(
+				JSON.stringify($scope.showAds.badchoiceAd, null, "\t")
+			);
+
+			ads.updateCategoriesShow($scope.showAds.badchoiceAd);
 
 			$ionicPopup.alert({
 				scope: $scope,

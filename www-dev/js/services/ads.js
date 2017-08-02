@@ -105,27 +105,31 @@ function (
 	}
 
 	function updateCategoriesShow (ad) {
-		var cats = ad.categories.split(",");
+		if (ad) {
+			var cats = ad.categories.split(",");
 
-		cats.forEach(function (a) {
-			var cat = categories[a.trim()] || {show: 0, clicks: 0};
-			cat.show++;
-			categories[a.trim()] = cat;
-		});
+			cats.forEach(function (a) {
+				var cat = categories[a.trim()] || {show: 0, clicks: 0};
+				cat.show++;
+				categories[a.trim()] = cat;
+			});
 
-		saveCategories();
+			saveCategories();
+		}
 	}
 
 	function updateCategoriesClick (ad) {
-		var cats = ad.categories.split(",");
+		if (ad) {
+			var cats = ad.categories.split(",");
 
-		cats.forEach(function (a) {
-			var cat = categories[a.trim()] || {show: 0, clicks: 0};
-			cat.clicks++;
-			categories[a.trim()] = cat;
-		});
+			cats.forEach(function (a) {
+				var cat = categories[a.trim()] || {show: 0, clicks: 0};
+				cat.clicks++;
+				categories[a.trim()] = cat;
+			});
 
-		saveCategories();
+			saveCategories();
+		}
 	}
 
 	function getCategories () {
@@ -255,10 +259,6 @@ function (
 
 				adsIndex = (adsIndex + 1) % ads.length;
 
-				updateCategoriesShow(winAd);
-				updateCategoriesShow(restartAd);
-				updateCategoriesShow(badchoiceAd);
-
 				return {
 					winAd: winAd,
 					restartAd: restartAd,
@@ -272,7 +272,8 @@ function (
 
 	return {
 		getAd: getAd,
-		openAd: openAd
+		openAd: openAd,
+		updateCategoriesShow: updateCategoriesShow
 	};
 }]);
 

@@ -1,0 +1,12 @@
+<p>You win, ready for next puzzle?</p>
+
+<div class='ad'  ng-if='showAds.winAd' ng-click='openAd(showAds.winAd)'>
+	<div class='bg-image' style='background-image: url("{{showAds.winAd.imageURLWide}}");'></div>
+	<div class='text'>
+		<div class='square-image' style='background-image: url("{{showAds.winAd.imageURL}}");'></div>
+		<div class='description'>
+			<div class='title'>{{showAds.winAd.adTitle}}</div> 
+			{{showAds.winAd.adDescription}}
+		</div>
+	</div>
+</div>

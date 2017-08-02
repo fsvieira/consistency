@@ -5,7 +5,7 @@
     "main": "desktop/app.electron.js",
     "dependencies": {
         "com.fsvieira.cordova.plugin.appnext": "custom-plugins/com.fsvieira.cordova.plugin.appnext",
-        "com.fsvieira.cordova.plugin.vungle": "file:custom-plugins/com.fsvieira.cordova.plugin.appnext",
+        "com.fsvieira.cordova.plugin.vungle": "file://custom-plugins\\com.fsvieira.cordova.plugin.appnext",
         "cordova-android": "^6.2.3",
         "cordova-custom-config": "^4.0.2",
         "cordova-plugin-compat": "^1.1.0",

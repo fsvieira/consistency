@@ -560,7 +560,7 @@
 									$ionicPopup.alert({
 										scope: $scope,
 										title: "Congratulations",
-										template: "You win, ready for next puzzle?",
+										templateUrl: "templates/puzzle/win.html",
 										okText: "OK",
 										okType: "button-positive"
 									}).then(function () {
@@ -631,7 +631,7 @@
 								$ionicPopup.confirm({
 									scope: $scope,
 									title: "Restart",
-									template: "Restart Puzzle?"
+									templateUrl: "templates/puzzle/restart.html"
 								}).then(function (res) {
 									restartLock = true;
 									if (res) {
@@ -810,6 +810,10 @@
 								checkSolution();
 							};
 
+							$scope.openAd = function (ad) {
+								ads.openAd(ad);
+							};
+
 							$scope.setItem = function () {
 								var item = $scope.board.selected.item;
 								var y = $scope.board.selected.y;
@@ -819,6 +823,12 @@
 									item.v !== $scope.puzzle.solution[y][x]
 								) {
 									play("alert");
+
+									console.log(
+										JSON.stringify($scope.showAds.badchoiceAd, null, "\t")
+									);
+
+									ads.updateCategoriesShow($scope.showAds.badchoiceAd);
 
 									$ionicPopup.alert({
 										scope: $scope,
@@ -1587,27 +1597,31 @@
 							}
 
 							function updateCategoriesShow (ad) {
-								var cats = ad.categories.split(",");
+								if (ad) {
+									var cats = ad.categories.split(",");
 
-								cats.forEach(function (a) {
-									var cat = categories[a.trim()] || {show: 0, clicks: 0};
-									cat.show++;
-									categories[a.trim()] = cat;
-								});
+									cats.forEach(function (a) {
+										var cat = categories[a.trim()] || {show: 0, clicks: 0};
+										cat.show++;
+										categories[a.trim()] = cat;
+									});
 
-								saveCategories();
+									saveCategories();
+								}
 							}
 
 							function updateCategoriesClick (ad) {
-								var cats = ad.categories.split(",");
+								if (ad) {
+									var cats = ad.categories.split(",");
 
-								cats.forEach(function (a) {
-									var cat = categories[a.trim()] || {show: 0, clicks: 0};
-									cat.clicks++;
-									categories[a.trim()] = cat;
-								});
+									cats.forEach(function (a) {
+										var cat = categories[a.trim()] || {show: 0, clicks: 0};
+										cat.clicks++;
+										categories[a.trim()] = cat;
+									});
 
-								saveCategories();
+									saveCategories();
+								}
 							}
 
 							function getCategories () {
@@ -1737,10 +1751,6 @@
 
 										adsIndex = (adsIndex + 1) % ads.length;
 
-										updateCategoriesShow(winAd);
-										updateCategoriesShow(restartAd);
-										updateCategoriesShow(badchoiceAd);
-
 										return {
 											winAd: winAd,
 											restartAd: restartAd,
@@ -1754,7 +1764,8 @@
 
 							return {
 								getAd: getAd,
-								openAd: openAd
+								openAd: openAd,
+								updateCategoriesShow: updateCategoriesShow
 							};
 						}]);
 

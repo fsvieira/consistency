@@ -1,17 +1,13 @@
 <p>You are making the wrong choice, please consider other action.</p>
 <p><ion-checkbox ng-model="settings.badchoice" ng-change='saveSettings()'>Show Bad Choice<br>Alert</ion-checkbox></p>
 
-<div class='ad' >
-	<div class='bg-image' style='background-image: url("https://cdn.vox-cdn.com/thumbor/7NpwLmnhIcC3-EQp8GOXaoRC_yQ=/1x0:980x653/1200x800/filters:focal(1x0:980x653)/cdn.vox-cdn.com/uploads/chorus_image/image/8309379/827699914_gina_carano_5_122_542lo.0.jpg");'></div>
-	<!--
-	<p>Title: {{showAds.badchoiceAd.adTitle}}</p>
-	<p>Description: {{showAds.badchoiceAd.adDescription}}</p>
-	<p>Image: {{showAds.badchoiceAd.imageURL}}</p>
-	-->
-
-	<div class='bg-text'></div>
+<div class='ad'  ng-if='showAds.badchoiceAd' ng-click='openAd(showAds.badchoiceAd)'>
+	<div class='bg-image' style='background-image: url("{{showAds.badchoiceAd.imageURLWide}}");'></div>
 	<div class='text'>
-		<div class='square-image' style='background-image: url("https://pbs.twimg.com/profile_images/817237262245056512/wBld0-v3_400x400.jpg");'></div>
-		<p>This is Gina,</p>
+		<div class='square-image' style='background-image: url("{{showAds.badchoiceAd.imageURL}}");'></div>
+		<div class='description'>
+			<div class='title'>{{showAds.badchoiceAd.adTitle}}</div> 
+			{{showAds.badchoiceAd.adDescription}}
+		</div>
 	</div>
 </div>

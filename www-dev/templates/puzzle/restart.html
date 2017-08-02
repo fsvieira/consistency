@@ -1,0 +1,12 @@
+<p>Restart Puzzle?</p>
+
+<div class='ad'  ng-if='showAds.restartAd' ng-click='openAd(showAds.restartAd)'>
+	<div class='bg-image' style='background-image: url("{{showAds.restartAd.imageURLWide}}");'></div>
+	<div class='text'>
+		<div class='square-image' style='background-image: url("{{showAds.restartAd.imageURL}}");'></div>
+		<div class='description'>
+			<div class='title'>{{showAds.restartAd.adTitle}}</div> 
+			{{showAds.restartAd.adDescription}}
+		</div>
+	</div>
+</div>
