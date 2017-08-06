@@ -1,3 +1,7 @@
+# Website
+
+https://fsvieira.github.io/consistency/
+	
 # Consistency
 
 Consistency puzzle game is a version of the well-known logic puzzle called zebra, often called Einstein's Riddle or Einstein's Puzzle because it is said to have been invented by Albert Einstein as a boy. It is also known as Sherlock puzzle because is a deduction puzzle game worth of the best detective.
@@ -33,15 +37,14 @@ Features:
 - All puzzle progress is automatically saved.
 
 # Play
-	
-	* Android: https://play.google.com/store/apps/details?id=com.fsvieira.consistency
-	* Desktop: https://fsvieira.itch.io/consistency
+ * Android: https://play.google.com/store/apps/details?id=com.fsvieira.consistency
+ * Desktop: https://fsvieira.itch.io/consistency
 
 # Contribute
-	There is number of ways to make a contribution to this project, you can contribute with code, testing, distribution and 
-	any other way you see fit. 
+There is number of ways to make a contribution to this project, you can contribute with code, testing, distribution and 
+any other way you see fit. 
 	
-	Rigth now I really would like to add more themes/images sets to the game, and so I am seeking for people artistic inclined 
-	to add more images sets to the game, they don't need to be perfect but they must have a consistency look and feel.
+Rigth now I really would like to add more themes/images sets to the game, and so I am seeking for people artistic inclined 
+to add more images sets to the game, they don't need to be perfect but they must have a consistency look and feel.
 
 	
