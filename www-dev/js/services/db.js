@@ -48,6 +48,8 @@ zebra.factory("db", ["$http", "$q", "$ionicPlatform", function (
 					runS();
 
 				}, function (e) {
+					console.log(e);
+					alert(e.message);
 					reject(e);
 				});
 			});
@@ -67,6 +69,8 @@ zebra.factory("db", ["$http", "$q", "$ionicPlatform", function (
 						resolve(result);
 					});
 				}, function (e) {
+					console.log(e);
+					alert(e.message);
 					reject(e);
 				});
 			});

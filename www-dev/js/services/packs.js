@@ -109,7 +109,7 @@ function (
 		var unlock = "null";
 		var sql = [];
 
-		sql.push("INSERT OR REPLACE INTO packs (id,name,status,completed," +
+		sql.push("INSERT OR IGNORE INTO packs (id,name,status,completed," +
 				"total, unlock) VALUES (" +
 				pack.id + "," +
 				"'" + pack.name + "'," +
@@ -120,7 +120,7 @@ function (
 			");");
 
 		pack.grids.forEach(function (grid, index) {
-			sql.push("INSERT OR REPLACE INTO grids(packId, w, h, completed," +
+			sql.push("INSERT OR IGNORE INTO grids(packId, w, h, completed," +
 					" total, pos) " +
 					"VALUES (" +
 						pack.id + "," +
@@ -138,7 +138,7 @@ function (
 				var status = "unlocked";
 				var unlock = 0;
 
-				sql.push("INSERT OR REPLACE INTO puzzles(" +
+				sql.push("INSERT OR IGNORE INTO puzzles(" +
 						"packId,gridPos,status," +
 						"completed,data, pos) VALUES (" +
 							pack.id + "," +
